@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React JS</title>
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+
+    
+    <!-- Favcion -->
+    <link rel="shortcut icon" href="/food-assets/img/logo/favicon.svg">
+    <!--<< Bootstrap min.css >>-->
+    <link rel="stylesheet" href="/food-assets/css/bootstrap.min.css">
+    <!--<< Font Awesome.css >>-->
+    <link rel="stylesheet" href="/food-assets/css/font-awesome.css">
+    <!--<< Animate.css >>-->
+    <link rel="stylesheet" href="/food-assets/css/animate.css">
+    <!--<< Magnific Popup.css >>-->
+    <link rel="stylesheet" href="/food-assets/css/magnific-popup.css">
+    <!--<< MeanMenu.css >>-->
+    <link rel="stylesheet" href="/food-assets/css/meanmenu.css">
+    <!--<< Swiper Bundle.css >>-->
+    <link rel="stylesheet" href="/food-assets/css/swiper-bundle.min.css">
+    <!--<< Nice Select.css >>-->
+    <link rel="stylesheet" href="/food-assets/css/nice-select.css">
+    <!--<< Main.css >>-->
+    <link rel="stylesheet" href="/food-assets/css/main.css">
+    <!--<< Style.css >>-->
+    <link rel="stylesheet" href="/food-assets/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&amp;display=swap" rel="stylesheet">
+
+
+    <!-- <link href="/src/assets/css/theme.css" rel="stylesheet" /> -->
+
+  </head>
+  <body>
+    <div id="root" class="container-fluid"></div>
+    <script type="module" src="/src/main.jsx"></script>
+
+    <script src="//code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script type="module">
+      // Import Firebase SDKs from CDN
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+      import {
+        getMessaging,
+        getToken,
+        onMessage,
+      } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-messaging.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyAWoPeAyvJT4dmCX6kG3itDEJMwpN21Jdg",
+        authDomain: "desktop-web-push-notification.firebaseapp.com",
+        projectId: "desktop-web-push-notification",
+        storageBucket: "desktop-web-push-notification.firebasestorage.app",
+        messagingSenderId: "247313256007",
+        appId: "1:247313256007:web:78c2be862cbd8b03396b62",
+        measurementId: "G-BXZL67Y8Y2",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const messaging = getMessaging(app);
+
+      // Request permission & get token
+      async function requestFCMToken() {
+
+        try {
+          const token = await getToken(messaging, {
+            vapidKey:
+              "BKBn9tyUSKgnwrDc9grKmUGpmNjHtmCLXkGoQRQOq1lL1PLpzqkYuJutFaqOc3oM-z_fsW9KAUJr2CbFucrTQIA",
+          });
+          localStorage.setItem('fcm_token', token)
+
+        } catch (err) {
+          console.error("Error getting FCM token:", err);
+        }
+      }
+
+      fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+          console.log('Your IP address is:', data.ip);
+          localStorage.setItem('ip_address', data.ip)
+
+        })
+        .catch(error => {
+          console.error('Error fetching IP:', error);
+        });
+
+      function requestNotificationPermission() {
+        if (!('Notification' in window)) {
+          alert('This browser does not support desktop notification');
+          return;
+        }
+
+        // Request permission
+        Notification.requestPermission().then((permission) => {
+          console.log('Permission result:', permission);
+
+          if (permission === 'granted') {
+            // Permission granted, you can now show notifications
+            requestFCMToken();
+            new Notification('Thanks!', { body: 'You have granted notification permissions.' });
+          } else if (permission === 'denied') {
+            // Permission denied, handle accordingly (e.g., show in-app message)
+            console.log('Notification permission denied by the user.');
+          } else {
+            // Permission default (ignored or dismissed)
+            console.log('User dismissed the permission prompt.');
+          }
+        }).catch((error) => {
+          console.error('Error requesting permission:', error);
+        });
+      }
+
+      requestNotificationPermission()
+
+      // 🔹 Listen for messages when app is open
+      onMessage(messaging, (payload) => {
+        console.log("Message received in foreground: ", payload);
+
+        // You can show a custom notification
+        const { title, body, icon } = payload.data;
+
+        new Notification(title, {
+          body,
+          icon: icon || "/firebase-logo.png",
+        });
+      });
+    </script>
+    <!--<< All JS Plugins >>-->
+    <!-- <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.7.1.min.js"></script> -->
+    <!--<< Viewport Js >>-->
+    <script src="/food-assets/js/viewport.jquery.js"></script>
+    <!--<< Bootstrap Js >>-->
+    <script src="/food-assets/js/bootstrap.bundle.min.js"></script>
+    <!--<< Nice Select Js >>-->
+    <script src="/food-assets/js/jquery.nice-select.min.js"></script>
+    <!--<< Waypoints Js >>-->
+    <script src="/food-assets/js/jquery.waypoints.js"></script>
+    <!--<< Counterup Js >>-->
+    <script src="/food-assets/js/jquery.counterup.min.js"></script>
+    <!--<< Swiper Slider Js >>-->
+    <script src="/food-assets/js/swiper-bundle.min.js"></script>
+    <!--<< MeanMenu Js >>-->
+    <script src="/food-assets/js/jquery.meanmenu.min.js"></script>
+    <!--<< CountDown Js >>-->
+    <!-- <script src="/food-assets/js/countdowncustom.js"></script> -->
+    <!--<< Magnific Popup Js >>-->
+    <script src="/food-assets/js/jquery.magnific-popup.min.js"></script>
+    <!--<< GSAP Animation Js >>-->
+    <script src="/food-assets/js/animation.js"></script>
+    <!--<< Wow Animation Js >>-->
+    <script src="/food-assets/js/wow.min.js"></script>
+    <!--<< Main.js >>-->
+    <script src="/food-assets/js/main.js"></script>
+  </body>
+</html>

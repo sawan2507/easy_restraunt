@@ -1,0 +1,258 @@
+import { useState } from "react";
+import { useEffect } from "react";
+import MEDIA_URL from "../../media";
+import logoImage from "../../food-assets/img/easy-restro.png";
+
+function Header() {
+    const [carts, setCart] = useState([])
+    const [totalAmount, setTotalAmount] = useState(0)
+    const [className, setClassName] = useState('preloader')
+
+    useEffect(() => {
+        setTimeout(() => {
+            setClassName('d-none')
+        }, 2000);
+    }, [])
+    
+
+  return (
+    <>
+        <div id="preloader" className={className}>
+            <div className="animation-preloader">
+                <div className="spinner">                
+                </div>
+                <div className="txt-loading">
+                    <span data-text-preloader="R" className="letters-loading">
+                    R
+                    </span>
+                    <span data-text-preloader="E" className="letters-loading">
+                    E
+                    </span>
+                    <span data-text-preloader="S" className="letters-loading">
+                    S
+                    </span>
+                    <span data-text-preloader="T" className="letters-loading">
+                    T
+                    </span>
+                    <span data-text-preloader="A" className="letters-loading">
+                    A
+                    </span>
+                    <span data-text-preloader="U" className="letters-loading">
+                    U
+                    </span>
+                    <span data-text-preloader="R" className="letters-loading">
+                    R
+                    </span>
+                    <span data-text-preloader="N" className="letters-loading">
+                    N
+                    </span>
+                    <span data-text-preloader="T" className="letters-loading">
+                    T
+                    </span>
+                </div>
+                <p className="text-center">Loading</p>
+            </div>
+            <div className="loader">
+                <div className="row">
+                    <div className="col-3 loader-section section-left">
+                        <div className="bg"></div>
+                    </div>
+                    <div className="col-3 loader-section section-left">
+                        <div className="bg"></div>
+                    </div>
+                    <div className="col-3 loader-section section-right">
+                        <div className="bg"></div>
+                    </div>
+                    <div className="col-3 loader-section section-right">
+                        <div className="bg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {/* <div className="fix-area d-none">
+            <div className="offcanvas__info">
+                <div className="offcanvas__wrapper">
+                    <div className="offcanvas__content">
+                        <div className="offcanvas__top mb-5 d-flex justify-content-between align-items-center">
+                            <div className="offcanvas__logo">
+                                <a href="#">
+                                <img src={logoImage} alt="logo-img" />
+                                </a>
+                            </div>
+                            <div className="offcanvas__close">
+                                <button>
+                                <i className="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <p className="text d-none d-lg-block">
+                            This involves interactions between a business and its customers. It's about meeting customers' needs and resolving their problems. Effective customer service is crucial.
+                        </p>
+                        <div className="offcanvas-gallery-area d-none d-lg-block">
+                            <div className="offcanvas-gallery-items">
+                                <a href="src/food-assets/img/header/01.jpg" className="offcanvas-image img-popup">
+                                <img src="src/food-assets/img/header/01.jpg" alt="gallery-img"/>
+                                </a>
+                                <a href="src/food-assets/img/header/02.jpg" className="offcanvas-image img-popup">
+                                <img src="src/food-assets/img/header/02.jpg" alt="gallery-img"/>
+                                </a>
+                                <a href="src/food-assets/img/header/03.jpg" className="offcanvas-image img-popup">
+                                <img src="src/food-assets/img/header/03.jpg" alt="gallery-img"/>
+                                </a>
+                            </div>
+                            <div className="offcanvas-gallery-items">
+                                <a href="src/food-assets/img/header/04.jpg" className="offcanvas-image img-popup">
+                                <img src="src/food-assets/img/header/04.jpg" alt="gallery-img"/>
+                                </a>
+                                <a href="src/food-assets/img/header/05.jpg" className="offcanvas-image img-popup">
+                                <img src="src/food-assets/img/header/05.jpg" alt="gallery-img"/>
+                                </a>
+                                <a href="src/food-assets/img/header/06.jpg" className="offcanvas-image img-popup">
+                                <img src="src/food-assets/img/header/06.jpg" alt="gallery-img"/>
+                                </a>
+                            </div>
+                        </div>
+                        <div className="mobile-menu fix mb-3"></div>
+                        <div className="offcanvas__contact">
+                            <h4>Contact Info</h4>
+                            <ul>
+                                <li className="d-flex align-items-center">
+                                    <div className="offcanvas__contact-icon">
+                                        <i className="fal fa-map-marker-alt"></i>
+                                    </div>
+                                    <div className="offcanvas__contact-text">
+                                        <a target="_blank" href="#">Main Street, Melbourne, Australia</a>
+                                    </div>
+                                </li>
+                                <li className="d-flex align-items-center">
+                                    <div className="offcanvas__contact-icon mr-15">
+                                        <i className="fal fa-envelope"></i>
+                                    </div>
+                                    <div className="offcanvas__contact-text">
+                                        <a href="tel:+013-003-003-9993"><span className="mailto:info@enofik.com"><span className="__cf_email__" data-cfemail="1871767e77587e77777c7371767f367b7775">[email&#160;protected]</span></span></a>
+                                    </div>
+                                </li>
+                                <li className="d-flex align-items-center">
+                                    <div className="offcanvas__contact-icon mr-15">
+                                        <i className="fal fa-clock"></i>
+                                    </div>
+                                    <div className="offcanvas__contact-text">
+                                        <a target="_blank" href="#">Mod-friday, 09am -05pm</a>
+                                    </div>
+                                </li>
+                                <li className="d-flex align-items-center">
+                                    <div className="offcanvas__contact-icon mr-15">
+                                        <i className="far fa-phone"></i>
+                                    </div>
+                                    <div className="offcanvas__contact-text">
+                                        <a href="tel:+11002345909">+11002345909</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div className="header-button mt-4">
+                                <a href="/product" className="theme-btn">
+                                <span className="button-content-wrapper d-flex align-items-center justify-content-center">
+                                <span className="button-icon"><i className="flaticon-delivery"></i></span>
+                                <span className="button-text">order now</span>
+                                </span>
+                                </a>
+                            </div>
+                            <div className="social-icon d-flex align-items-center">
+                                <a href="#"><i className="fab fa-facebook-f"></i></a>
+                                <a href="#"><i className="fab fa-twitter"></i></a>
+                                <a href="#"><i className="fab fa-youtube"></i></a>
+                                <a href="#"><i className="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div className="offcanvas__overlay"></div>
+        */}
+        <header className="section-bg-white">
+            {/* <div className="header-top">
+                <div className="container">
+                    <div className="header-top-wrapper">
+                        <ul className="">
+                            <li><span>100%</span> Secure</li> 
+                            <li><i className="fas fa-pizza"></i>Wait minimum enjoy maximum</li>
+                        </ul>
+                        <div className="top-right">
+                            <div className="search-wrp">
+                                <button><i className="far fa-search"></i></button>
+                                <input placeholder="Search" aria-label="Search" />
+                            </div>
+                            <div className="social-icon d-flex align-items-center">
+                                <a href="#"><i className="fab fa-facebook-f"></i></a>
+                                <a href="#"><i className="fab fa-twitter"></i></a>
+                                <a href="#"><i className="fab fa-vimeo-v"></i></a>
+                                <a href="#"><i className="fab fa-pinterest-p"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> */}
+            <div id="header-sticky" className="header-1">
+                <div className="container">
+                    <div className="mega-menu-wrapper">
+                        <div className="header-main">
+                            <div className="logo">
+                                <img src={logoImage} alt="logo-img" className="logo-img" />
+                                <a href="/" className="header-logo">
+                                </a> 
+                            </div>
+                            <div className="d-none header-left">
+                            </div>
+                            <div className="d-none header-right d-flex justify-content-end align-items-center" style={{visibility:'hidden'}}>
+                                <div className="menu-cart">
+                                    <div className="cart-box">
+                                        {carts.length > 0 ? carts.map((cart, ckey) => (
+                                            <ul key={ckey}>
+                                                <li>
+                                                    <img src={`${MEDIA_URL}${cart.image}`} alt="image" />
+                                                    <div className="cart-product">
+                                                        <h6 href="#">{cart.title}</h6>
+                                                        <span>₹ {cart.special_price*cart.quantity}</span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        )) : <></>}
+                                        <div className="shopping-items d-flex align-items-center justify-content-between">
+                                            <span>-</span>
+                                            <span>Total : ₹ {totalAmount.toFixed(2)}</span>
+                                        </div>
+                                        <div className="cart-button d-flex justify-content-between mb-4">
+                                            <a href="/cart" className="theme-btn">View Cart</a>
+                                            <a href="/checkout" className="theme-btn bg-red-2">Checkout</a>
+                                        </div>
+                                    </div>
+                                    <a href="/cart" className="cart-icon">
+                                        <i className="far fa-shopping-basket"></i>
+                                        <span className="cart-counter">{carts.length}</span>
+                                    </a>
+                                </div>
+                                <div className="header-button" style={{visibility:'hidden'}}>
+                                    <a href="#" className="theme-btn bg-red-2">contact us</a>
+                                </div>
+                                <div className="header__hamburger d-xl-block my-auto">
+                                    <div className="sidebar__toggle">
+                                        <div className="header-bar">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </>
+  );
+}
+
+export default Header;

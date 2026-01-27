@@ -1,0 +1,159 @@
+.cart-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+
+.cart-details {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #333;
+}
+
+.checkout-btn {
+  width: 150px;
+  /* background: #1976d2; */
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.checkout-btn:hover {
+  background: #0d47a1;
+}
+
+/* Categories */
+.categories {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  padding: 10px 5px;
+
+  /* hide scrollbar */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.categories::-webkit-scrollbar {
+  display: none;
+}
+
+.category {
+  text-align: center;
+  /* width: 100px; */
+  border: 1px solid #ffff;
+  border-radius: 20px;
+  background-color: #ffff;
+}
+
+.category img {
+  /* width: 90%; */
+  height: 100px;
+  object-fit: contain;
+  padding: 10px;
+}
+
+.category p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.food-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.food-item {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 2px 5px rgb(18 17 17 / 63%);
+  /* margin: 5px; */
+}
+
+.food-item img {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.food-image {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+.food-info {
+  flex: 1;
+}
+
+.food-info h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.food-info small {
+  color: #888;
+  font-size: 13px;
+}
+
+.food-price {
+  color: #ff7a2f;
+  font-weight: bold;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.food-price-cross {
+  color: red;
+  font-weight: bold;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  background: #e3e3e3;
+  border-radius: 8px;
+  /* padding: 5px 8px; */
+  /* margin-left: 15px; */
+}
+
+.quantity button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #333;
+  padding: 5px 10px;
+}
+
+.quantity span {
+  margin: 0 5px;
+  font-size: 14px;
+}
+
