@@ -52,13 +52,13 @@
       } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-messaging.js";
 
       const firebaseConfig = {
-        apiKey: "AIzaSyAWoPeAyvJT4dmCX6kG3itDEJMwpN21Jdg",
-        authDomain: "desktop-web-push-notification.firebaseapp.com",
-        projectId: "desktop-web-push-notification",
-        storageBucket: "desktop-web-push-notification.firebasestorage.app",
-        messagingSenderId: "247313256007",
-        appId: "1:247313256007:web:78c2be862cbd8b03396b62",
-        measurementId: "G-BXZL67Y8Y2",
+        apiKey: process.env.apiKey,
+        authDomain: process.env.authDomain,
+        projectId: process.env.projectId,
+        storageBucket: process.env.storageBucket,
+        messagingSenderId: process.env.messagingSenderId,
+        appId: process.env.appId,
+        measurementId: process.env.measurementId,
       };
 
       // Initialize Firebase
